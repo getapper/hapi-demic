@@ -1,0 +1,28 @@
+{
+  "name": "hapi-demic",
+  "version": "0.0.0",
+  "description": "A CLI based tool to create and develop HapiJS microservices based projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getapper/hapi-demic.git"
+  },
+  "keywords": [
+    "hapi",
+    "hapijs",
+    "microservices",
+    "h2o2",
+    "sdk",
+    "cli",
+    "tool"
+  ],
+  "author": "Getapper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getapper/hapi-demic/issues"
+  },
+  "homepage": "https://github.com/getapper/hapi-demic#readme"
+}
