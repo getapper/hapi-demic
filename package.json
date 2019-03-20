@@ -30,7 +30,6 @@
   "homepage": "https://github.com/getapper/hapi-demic#readme",
   "dependencies": {
     "chalk": "2.4.2",
-    "clear": "0.1.0",
     "clui": "0.3.6",
     "ejs": "2.6.1",
     "inquirer": "6.2.2",
