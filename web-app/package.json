@@ -76,7 +76,7 @@
 		"react-sombrero": "^0.5.2"
 	},
 	"restUris": {
-		"LOCALE": "http://localhost:5554",
+		"LOCALE": "http://localhost:9436",
 		"PREPROD": "",
 		"PRODUCTION": ""
 	},

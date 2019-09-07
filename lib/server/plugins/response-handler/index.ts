@@ -4,13 +4,15 @@ const clientErrorsCodes = require("root/constants/errors/client-errors-codes.jso
 // LIBS
 import boom from 'boom'
 
-// MODELS
-import { ApplicationError, ClientError } from 'root/models/errors'
-
 const plugin = {
   async register (server, {
     cookieOptions
   }) {
+    const {
+      ApplicationError,
+      ClientError
+    } = server.models
+
     const handleResponse = ({
       err = null,
       API = null,
@@ -25,7 +27,6 @@ const plugin = {
     }) => {
       let isError = false
       let isInternal = false
-      let isBoom = false
       let errorCode
       let errorMessage
       let stack
@@ -90,8 +91,6 @@ const plugin = {
     }
 
     const expose = {
-      ClientError,
-      ApplicationError,
       handleResponse
     }
 
