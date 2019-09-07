@@ -1,13 +1,13 @@
 {
   "name": "hapi-demic",
   "version": "0.0.0",
-  "description": "A CLI based tool to create and develop HapiJS microservices based projects",
+  "description": "An web-app based tool to create and develop HapiJS projects",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "demic": "./index.js"
+    "hapi-demic": "./index.js"
   },
   "repository": {
     "type": "git",
@@ -16,11 +16,9 @@
   "keywords": [
     "hapi",
     "hapijs",
-    "microservices",
-    "h2o2",
-    "sdk",
-    "cli",
-    "tool"
+    "tool",
+    "boilerplate",
+    "configurator"
   ],
   "author": "Getapper",
   "license": "MIT",
@@ -29,11 +27,22 @@
   },
   "homepage": "https://github.com/getapper/hapi-demic#readme",
   "dependencies": {
+    "@hapi/hapi": "18.3.2",
+    "@hapi/inert": "5.2.1",
+    "@hapi/vision": "5.5.3",
     "chalk": "2.4.2",
-    "clui": "0.3.6",
     "ejs": "2.6.1",
-    "inquirer": "6.2.2",
-    "lodash": "4.17.11",
-    "minimist": "1.2.0"
+    "hapi-swagger": "10.1.1",
+    "lodash": "4.17.15",
+    "minimist": "1.2.0",
+    "module-alias": "2.2.1",
+    "qs": "6.8.0"
+  },
+  "devDependencies": {
+    "@types/hapi": "18.0.2",
+    "@types/node": "12.7.4"
+  },
+  "_moduleAliases": {
+    "root": "lib/server"
   }
 }

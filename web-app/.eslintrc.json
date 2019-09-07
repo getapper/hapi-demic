@@ -1,0 +1,53 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "arrow-parens": "off",
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": ["error", "never"],
+    "no-confusing-arrow": "off",
+    "no-unused-expressions": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-one-expression-per-line": "off",
+    "import/prefer-default-export": "off",
+    "no-param-reassign": "off",
+    "no-unused-vars": "off",
+    "import/extensions": "off",
+    "react/no-unused-prop-types": "off",
+    "object-curly-newline": ["error", {
+      "ObjectExpression": {"minProperties": 1},
+      "ObjectPattern": {"minProperties": 1},
+      "ImportDeclaration": {
+        "multiline": true,
+        "minProperties": 1,
+        "consistent": true
+      },
+      "ExportDeclaration": "always"
+    }],
+    "object-property-newline": ["error", {
+      "allowAllPropertiesOnSameLine": false
+    }]
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "configs/webpack.config.dev.js"
+      }
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "configs/webpack.config.dev.js"
+      }
+    }
+  },
+  "plugins": [
+    "react"
+  ]
+}
