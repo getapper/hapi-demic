@@ -1,0 +1,28 @@
+{
+  "name": "",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server.dev": "./node_modules/nodemon/bin/nodemon.js -e js --exec \"sleep 1 && node ./index.js\""
+  },
+  "dependencies": {
+    "@hapi/hapi": "18.3.2",
+    "@hapi/inert": "5.2.1",
+    "@hapi/vision": "5.5.3",
+    "chalk": "2.4.2",
+    "hapi-swagger": "10.1.1",
+    "lodash": "4.17.15",
+    "minimist": "1.2.0",
+    "module-alias": "2.2.1",
+    "qs": "6.8.0"
+  },
+  "devDependencies": {
+    "@types/hapi": "18.0.2",
+    "@types/node": "12.7.4",
+    "nodemon": "1.19.2"
+  },
+  "_moduleAliases": {
+    "root": "lib/server"
+  }
+}
