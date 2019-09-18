@@ -26,6 +26,7 @@ import {
 import {
   Snackbar,
 } from '@material-ui/core'
+import MadeByGetapper from 'react-made-by-getapper'
 
 // REDUX
 import {
@@ -46,6 +47,9 @@ import lng from 'root-services/language'
 // STYLES
 import styles from 'root-styles/app'
 import theme from 'root-themes'
+import NewMethod from './scenes/new-method'
+import Routes from './scenes/routes'
+import Home from './scenes/home'
 
 const AppContent = ({
   classes,
@@ -54,7 +58,9 @@ const AppContent = ({
   const dispatch = useDispatch()
 
   return (
-    <div>
+    <div
+      className={classes.background}
+    >
       <Snackbar
         ContentProps={{
           className:
@@ -73,8 +79,18 @@ const AppContent = ({
       <HashRouter
         routerStatePath="routing.mainRouter"
         loaderComponent={<div>Loading...</div>}
-      >{}
+      >
+        <Route hash="#" initAccess routeKey="home">
+          <Home />
+        </Route>
+        <Route hash="#/routes" initAccess routeKey="routes">
+          <Routes />
+        </Route>
+        <Route hash="#/new-method/{path}" initAccess routeKey="newMethod">
+          <NewMethod />
+        </Route>
       </HashRouter>
+      <MadeByGetapper className="" />
     </div>
   )
 }

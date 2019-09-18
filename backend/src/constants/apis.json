@@ -1,0 +1,16 @@
+{
+  "api": {
+    "routes": {
+      "project": {
+        "methods": {
+          "GET": "api/project/GET"
+        }
+      },
+      "routing": {
+        "methods": {
+          "GET": "api/routing/GET"
+        }
+      }
+    }
+  }
+}

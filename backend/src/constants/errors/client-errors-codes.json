@@ -1,0 +1,9 @@
+{
+  "INTERNAL": "INTERNAL",
+  "api/project/GET": {
+    "VALIDATION_ERROR": "api/project/GET_VALIDATION_ERROR"
+  },
+  "api/routing/GET": {
+    "VALIDATION_ERROR": "api/routing/GET_VALIDATION_ERROR"
+  }
+}

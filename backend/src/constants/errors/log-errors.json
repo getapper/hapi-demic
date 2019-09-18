@@ -1,0 +1,8 @@
+{
+  "api/project/GET": [
+    "VALIDATION_ERROR"
+  ],
+  "api/routing/GET": [
+    "VALIDATION_ERROR"
+  ]
+}

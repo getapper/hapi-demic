@@ -1,0 +1,1 @@
+declare namespace NodeJS {  export interface Process {    daos: any  }}

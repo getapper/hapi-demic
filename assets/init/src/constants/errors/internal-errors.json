@@ -1,0 +1,5 @@
+{
+  "MONGO": "Mongo",
+  "MYSQL": "MySQL",
+  "MSSQL": "MSSQL"
+}

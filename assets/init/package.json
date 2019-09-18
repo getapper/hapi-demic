@@ -23,6 +23,6 @@
     "nodemon": "1.19.2"
   },
   "_moduleAliases": {
-    "root": "lib/server"
+    "root": "src"
   }
 }

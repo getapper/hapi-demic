@@ -1,0 +1,53 @@
+{
+  "port": "9127",
+  "host": "localhost",
+  "isSsl": false,
+  "loggerDb": null,
+  "auth": {
+    "enabled": false,
+    "authDb": "mongo",
+    "jwtSecret": "",
+    "expiresIn": 2592000000,
+    "cookieOptions": {
+      "ttl": 2592000000,
+      "encoding": "none",
+      "isSecure": false,
+      "isHttpOnly": true,
+      "clearInvalid": false,
+      "strictHeader": true,
+      "path": "/api/v0"
+    }
+  },
+  "acl": {
+    "enabled": false,
+    "options": {
+      "permissions": {},
+      "userPath": "user"
+    }
+  },
+  "useMongo": false,
+  "mongo": {
+    "url": "",
+    "settings": {
+      "native_parser": false,
+      "useNewUrlParser": true
+    },
+    "decorate": true
+  },
+  "useMysql": false,
+  "mysql": {
+    "database": "",
+    "password": "",
+    "user": ""
+  },
+  "useSwagger": true,
+  "swagger": {
+    "basePath": "/api/",
+    "documentationPath": "/",
+    "swaggerUIPath": "/swagger/",
+    "jsonPath": "/swagger.json"
+  },
+  "env": {
+    "DEBUG_VERBOSITY": 5
+  }
+}

@@ -1,0 +1,1 @@
+import hapiJoi from '@hapi/joi';import hapiJoiDate from '@hapi/joi-date';const joi = hapiJoi.extend(hapiJoiDate);export default {};

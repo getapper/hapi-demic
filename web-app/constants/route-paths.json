@@ -1,0 +1,4 @@
+{
+  "api/project/GET": "/api/project",
+  "api/routing/GET": "/api/routing"
+}

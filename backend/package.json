@@ -1,0 +1,76 @@
+{
+  "name": "hapi-demic",
+  "version": "0.0.0",
+  "description": "An web-app based tool to create and develop HapiJS projects",
+  "main": "backend/index.js",
+  "scripts": {
+    "server.dev": "./node_modules/nodemon/bin/nodemon.js -e js --exec \"sleep 1 && node ./index.js\"",
+    "tasks.generate-api-routes-errors": "node src/tasks/create-apis && node src/tasks/create-errors"
+  },
+  "bin": {
+    "hapi-demic": "./backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getapper/hapi-demic.git"
+  },
+  "keywords": [
+    "hapi",
+    "hapijs",
+    "tool",
+    "boilerplate",
+    "configurator"
+  ],
+  "author": "Getapper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getapper/hapi-demic/issues"
+  },
+  "homepage": "https://github.com/getapper/hapi-demic#readme",
+  "dependencies": {
+    "@antoniogiordano/hacli": "1.0.2",
+    "@hapi/glue": "6.1.1",
+    "@hapi/hapi": "18.3.1",
+    "@hapi/inert": "5.2.0",
+    "@hapi/joi": "15.0.0",
+    "@hapi/joi-date": "1.3.0",
+    "@hapi/scooter": "5.1.0",
+    "@hapi/vision": "5.5.2",
+    "@types/hapi": "18.0.2",
+    "@types/mongodb": "3.2.3",
+    "@types/node": "^12.7.2",
+    "aguid": "2.0.0",
+    "bcrypt": "3.0.6",
+    "chalk": "2.4.2",
+    "exec-sql": "^2.0.2",
+    "hapi-auth-jwt2": "8.6.1",
+    "hapi-mongodb": "8.0.0",
+    "hapi-swagger": "^10.1.1",
+    "joi-objectid": "2.0.0",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "4.17.15",
+    "minimist": "1.2.0",
+    "module-alias": "2.2.0",
+    "moment": "2.24.0",
+    "promise-mysql": "4.1.0",
+    "qs": "6.7.0",
+    "shelljs": "0.8.3",
+    "source-map-support": "0.5.13",
+    "uuid": "3.3.2"
+  },
+  "devDependencies": {
+    "@hapi/code": "5.3.1",
+    "@hapi/lab": "18.1.2",
+    "mongo-clean": "2.0.0",
+    "mongodb": "3.2.3",
+    "nodemon": "^1.19.1",
+    "typescript": "3.6.2",
+    "@types/hapi": "18.0.2",
+    "@types/node": "12.7.4",
+    "@typescript-eslint/parser": "^2.1.0",
+    "eslint": "6.3.0"
+  },
+  "_moduleAliases": {
+    "root": "src/"
+  }
+}

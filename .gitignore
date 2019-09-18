@@ -1,9 +1,10 @@
 .idea
 node_modules
 package-lock.json
-lib/**/*.js
-lib/**/*.js.map
+backend/**/*.js
+backend/**/*.js.map
 assets/**/*.js
 assets/**/*.js.map
 index.js
 index.js.map
+!web-app/**/*.js
