@@ -1,5 +1,5 @@
 {
-  "port": "9127",
+  "port": "5588",
   "host": "localhost",
   "isSsl": false,
   "loggerDb": null,

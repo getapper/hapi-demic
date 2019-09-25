@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "cross-env REST_ENV=LOCALE cross-env PORT=3620 cross-env node scripts/start.js",
 		"build": "cross-env REST_ENV=PRODUCTION cross-env NODE_ENV=production cross-env node scripts/build.js",
-		"deploy": "mv build_webpack ../backend/public"
+		"deploy": "npm run build && rm -rf ../backend/public && mv build_webpack ../backend/public"
 	},
 	"author": "",
 	"license": "ISC",
@@ -79,7 +79,7 @@
 		"react-sombrero": "^0.5.2"
 	},
 	"restUris": {
-		"LOCALE": "http://localhost:9127",
+		"LOCALE": "http://localhost:5588",
 		"PREPROD": "",
 		"PRODUCTION": ""
 	},

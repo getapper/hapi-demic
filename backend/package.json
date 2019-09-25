@@ -1,6 +1,6 @@
 {
   "name": "hapi-demic",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An web-app based tool to create and develop HapiJS projects",
   "main": "index.js",
   "bin": {
