@@ -1,3 +1,6 @@
 // ROUTES
+import endpoints from './endpoints';
 
-export default () => [];
+export default () => [
+  ...(endpoints()),
+];

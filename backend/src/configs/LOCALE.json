@@ -43,7 +43,7 @@
   "useSwagger": true,
   "swagger": {
     "basePath": "/api/",
-    "documentationPath": "/",
+    "documentationPath": "/docs",
     "swaggerUIPath": "/swagger/",
     "jsonPath": "/swagger.json"
   },

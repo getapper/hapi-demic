@@ -48,7 +48,11 @@ function Routes({
   }, [])
 
   const renderMethods = methods => methods ? Object.keys(methods).map(m => (
-    <Typography variant="caption">{m}</Typography>
+    <Typography
+      className={classes.MR20}
+      variant="caption"
+    >{m}
+    </Typography>
   )) : null
 
   const renderApis = (route, path) => {
@@ -67,7 +71,7 @@ function Routes({
         >
           <Button
             color="primary"
-            href="#/routes"
+            href={`#/new-route/${[...path, r].join('-')}`}
             variant="contained"
           >
             Add route

@@ -12,3 +12,19 @@ export const getApiRoutingAjax = (restUri, others) => ({
   url: `${restUri}/api/routing`,
   ...others,
 })
+
+export const createApiRoutingAjax = (restUri, payload, others) => ({
+  type: 'CREATE_API_ROUTING_AJAX_REQUEST',
+  method: 'POST',
+  url: `${restUri}/api/routing`,
+  data: payload,
+  ...others,
+})
+
+export const createApiRoutingEndpointsAjax = (restUri, payload, others) => ({
+  type: 'CREATE_API_ROUTING_ENDPOINTS_AJAX_REQUEST',
+  method: 'POST',
+  url: `${restUri}/api/routing/endpoints`,
+  data: payload,
+  ...others,
+})

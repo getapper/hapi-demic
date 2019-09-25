@@ -1,2 +1,3 @@
 {
+  "api/routing/endpoints/POST_METHOD_ALREADY_EXISTS": "This method already exists for this endpoint!"
 }

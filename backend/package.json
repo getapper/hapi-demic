@@ -2,13 +2,14 @@
   "name": "hapi-demic",
   "version": "0.0.0",
   "description": "An web-app based tool to create and develop HapiJS projects",
-  "main": "backend/index.js",
+  "main": "index.js",
+  "bin": {
+    "hapi-demic": "./index.js"
+  },
   "scripts": {
     "server.dev": "./node_modules/nodemon/bin/nodemon.js -e js --exec \"sleep 1 && node ./index.js\"",
-    "tasks.generate-api-routes-errors": "node src/tasks/create-apis && node src/tasks/create-errors"
-  },
-  "bin": {
-    "hapi-demic": "./backend/index.js"
+    "tasks.generate-api-routes-errors": "node src/tasks/create-apis && node src/tasks/create-errors",
+    "copy-routes-errors-to-web-app": "cp src/constants/route-paths.json ../web-app/constants/ && cp src/constants/errors/client-errors-codes.json ../web-app/constants/"
   },
   "repository": {
     "type": "git",

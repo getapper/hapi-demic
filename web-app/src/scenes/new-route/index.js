@@ -15,8 +15,6 @@ import {
   Button,
   Paper,
   TextField,
-  MenuItem,
-  Select,
   withStyles, Typography,
 } from '@material-ui/core'
 import {
@@ -34,7 +32,7 @@ import {
   getRestUri,
 } from 'root-redux/getters'
 import {
-  createApiRoutingEndpointsAjax,
+  createApiRoutingAjax,
 } from 'root-redux/actions'
 
 
@@ -49,10 +47,10 @@ import styles from './style.js'
 const methods = ['GET', 'POST', 'DELETE', 'PUT']
 
 const joiValidationSchema = joi.object({
-  method: joi.string().valid(methods),
+  route: joi.string(),
 })
 
-function NewMethod({
+function NewRoute({
   classes,
   t,
 }) {
@@ -68,12 +66,12 @@ function NewMethod({
   } = useForm({
     joiValidationSchema,
     initial: immutable.fromJS({
-      method: 'GET',
+      route: '',
     }),
     onSubmit: () => {
-      dispatch(createApiRoutingEndpointsAjax(restUri, {
+      dispatch(createApiRoutingAjax(restUri, {
         path: params.get('path'),
-        method: data.get('method'),
+        route: data.get('route'),
       }))
     },
   })
@@ -89,24 +87,13 @@ function NewMethod({
         </Typography>
         <FormComponent
           className={classes.MB20}
-          Component={Select}
+          Component={TextField}
           data={data}
-          field="method"
+          field="route"
           fullWidth
           onChange={onChange}
           validations={validations}
-        >
-          {
-            methods.map(method => (
-              <MenuItem
-                key={method}
-                value={method}
-              >
-                {method}
-              </MenuItem>
-            ))
-          }
-        </FormComponent>
+        />
         <Button
           color="primary"
           type="submit"
@@ -119,9 +106,9 @@ function NewMethod({
   )
 }
 
-NewMethod.propTypes = {
+NewRoute.propTypes = {
   classes: shape({}).isRequired,
   t: func.isRequired,
 }
 
-export default withStyles(styles)(translate()(memo(NewMethod)))
+export default withStyles(styles)(translate()(memo(NewRoute)))

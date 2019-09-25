@@ -1,5 +1,6 @@
 {
   "MONGO": "Mongo",
   "MYSQL": "MySQL",
-  "MSSQL": "MSSQL"
+  "MSSQL": "MSSQL",
+  "FILE_SYSTEM": "FILE_SYSTEM"
 }

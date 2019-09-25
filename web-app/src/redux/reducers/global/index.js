@@ -21,9 +21,9 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case GET_API_PROJECT_AJAX_SUCCESS:
+      state = state.set('isHapiDemic', action.data.isHapiDemic)
       if (action.data.isHapiDemic) {
         state = state.set('project', immutable.fromJS(action.data.project))
-        state = state.set('isHapiDemic', action.data.isHapiDemic)
       }
       return state
     case GET_API_ROUTING_AJAX_SUCCESS:

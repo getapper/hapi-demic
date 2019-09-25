@@ -1,1 +1,8 @@
-import get from './get';export default () => [  get()];
+// METHODS
+import get from './get';
+import post from './post';
+
+export default () => [
+  get(),
+  post(),
+];

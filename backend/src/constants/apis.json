@@ -8,7 +8,16 @@
       },
       "routing": {
         "methods": {
-          "GET": "api/routing/GET"
+          "DELETE": "api/routing/DELETE",
+          "GET": "api/routing/GET",
+          "POST": "api/routing/POST"
+        },
+        "routes": {
+          "endpoints": {
+            "methods": {
+              "POST": "api/routing/endpoints/POST"
+            }
+          }
         }
       }
     }

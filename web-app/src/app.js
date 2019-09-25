@@ -47,6 +47,7 @@ import lng from 'root-services/language'
 // STYLES
 import styles from 'root-styles/app'
 import theme from 'root-themes'
+import NewRoute from './scenes/new-route'
 import NewMethod from './scenes/new-method'
 import Routes from './scenes/routes'
 import Home from './scenes/home'
@@ -88,6 +89,9 @@ const AppContent = ({
         </Route>
         <Route hash="#/new-method/{path}" initAccess routeKey="newMethod">
           <NewMethod />
+        </Route>
+        <Route hash="#/new-route/{path}" initAccess routeKey="newRoute">
+          <NewRoute />
         </Route>
       </HashRouter>
       <MadeByGetapper className="" />

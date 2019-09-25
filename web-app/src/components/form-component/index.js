@@ -6,7 +6,10 @@ import React, {
   useState, useEffect,
 } from 'react'
 import {
+  arrayOf,
+  func,
   node,
+  oneOfType,
   shape,
   string,
 } from 'prop-types'
@@ -21,12 +24,14 @@ import {
 import styles from './style.js'
 
 const FormComponent = ({
+  children,
   classes,
   className,
   Component,
   data,
   field,
   label,
+  onChange,
   validations,
   ...props
 }) => {
@@ -44,23 +49,29 @@ const FormComponent = ({
       }
       label={label}
       name={field}
+      onChange={ev => onChange(field, ev.target.value)}
       value={data.get(field)}
       {...props}
-    />
+    >
+      {children}
+    </Component>
   )
 }
 
 FormComponent.propTypes = {
+  children: arrayOf(node),
   classes: shape({}),
   className: string,
   Component: node.isRequired,
   data: shape({}).isRequired,
   field: string.isRequired,
   label: string.optional,
+  onChange: func.isRequired,
   validations: shape({}).isRequired,
 }
 
 FormComponent.defaultProps = {
+  children: null,
   className: undefined,
   classes: undefined,
   label: null,

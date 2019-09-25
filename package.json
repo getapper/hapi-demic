@@ -1,12 +1,4 @@
 {
-  "name": "hapi-demic",
-  "version": "0.0.0",
-  "description": "An web-app based tool to create and develop HapiJS projects",
-  "main": "index.js",
-  "scripts": {},
-  "bin": {
-    "hapi-demic": "./index.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/getapper/hapi-demic.git"

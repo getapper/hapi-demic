@@ -8,3 +8,4 @@ assets/**/*.js.map
 index.js
 index.js.map
 !web-app/**/*.js
+backend/public

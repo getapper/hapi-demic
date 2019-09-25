@@ -1,3 +1,18 @@
 {
-  "INTERNAL": "INTERNAL"
+  "INTERNAL": "INTERNAL",
+  "api/project/GET": {
+    "VALIDATION_ERROR": "api/project/GET_VALIDATION_ERROR"
+  },
+  "api/routing/GET": {
+    "VALIDATION_ERROR": "api/routing/GET_VALIDATION_ERROR"
+  },
+  "api/routing/POST": {
+    "VALIDATION_ERROR": "api/routing/POST_VALIDATION_ERROR"
+  },
+  "api/routing/endpoints/POST": {
+    "VALIDATION_ERROR": "api/routing/endpoints/POST_VALIDATION_ERROR",
+    "ROUTING_NOT_FOUND": "api/routing/endpoints/POST_ROUTING_NOT_FOUND",
+    "ROUTE_NOT_FOUND": "api/routing/endpoints/POST_ROUTE_NOT_FOUND",
+    "METHOD_ALREADY_EXISTS": "api/routing/endpoints/POST_METHOD_ALREADY_EXISTS"
+  }
 }

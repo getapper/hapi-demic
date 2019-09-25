@@ -1,0 +1,1 @@
+// MODELSimport Project from 'root/models/project';export interface ReplyData {  isHapiDemic: boolean,  project?: Project,}

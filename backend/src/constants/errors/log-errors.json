@@ -2,7 +2,20 @@
   "api/project/GET": [
     "VALIDATION_ERROR"
   ],
+  "api/routing/DELETE": [
+    "VALIDATION_ERROR"
+  ],
   "api/routing/GET": [
     "VALIDATION_ERROR"
+  ],
+  "api/routing/POST": [
+    "VALIDATION_ERROR",
+    "ROUTING_NOT_FOUND",
+    "ROUTE_ALREADY_EXISTS"
+  ],
+  "api/routing/endpoints/POST": [
+    "VALIDATION_ERROR",
+    "ROUTING_NOT_FOUND",
+    "METHOD_ALREADY_EXISTS"
   ]
 }

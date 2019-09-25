@@ -57,10 +57,10 @@ const plugin = {
     }
 
     if (LoggerBase) {
-      Log = LogModel(LoggerBase),
-      LogError = LogErrorModel(LoggerBase),
-      LogInternalError =  LogInternalErrorModel(LoggerBase)
-    }
+      Log = LogModel(LoggerBase);
+      LogError = LogErrorModel(LoggerBase);
+      LogInternalError =  LogInternalErrorModel(LoggerBase);
+    };
 
     const expose = {
       Log,
