@@ -1,5 +1,6 @@
 // CONSTANTS
 const apis = require('root/constants/apis.json');
+const routePaths = require('root/constants/route-paths.json');
 const API = apis.api.routes.routing.methods.POST;
 
 // HELPERS
@@ -11,7 +12,7 @@ import validate from './validate';
 
 export default () => ({
   method: 'POST',
-  path: '/api/routing',
+  path: routePaths[API],
   config: {
     tags: ['api'],
     validate: {

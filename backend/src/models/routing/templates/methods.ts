@@ -4,6 +4,7 @@ export const generateIndex = (
   routePath: string,
 ) => `// CONSTANTS
 const apis = require('root/constants/apis.json');
+const routePaths = require('root/constants/route-paths.json');
 const API = ${methodPath};
 
 // HELPERS
@@ -15,7 +16,7 @@ import validate from './validate';
 
 export default () => ({
   method: '${method}',
-  path: '${routePath}',
+  path: routePaths[API],
   config: {
     tags: ['api'],
     validate: {
