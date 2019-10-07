@@ -71,7 +71,7 @@ function Routes({
         >
           <Button
             color="primary"
-            href={`#/new-route/${[...path, r].join('-')}`}
+            href={`#/new-route/${[...path, r].join('_')}`}
             variant="contained"
           >
             Add route
@@ -79,7 +79,7 @@ function Routes({
           <Button
             color="secondary"
             className={classes.ML10}
-            href={`#/new-method/${[...path, r].join('-')}`}
+            href={`#/new-method/${[...path, r].join('_')}`}
             variant="contained"
           >
             Add method

@@ -3,7 +3,7 @@ import labels from 'root-constants/client-errors-codes-labels'
 
 // REDUX
 import {
-  put, takeEvery,
+  put, takeEvery, delay,
 } from 'redux-saga/effects'
 import {
   showFeedback,
@@ -22,6 +22,7 @@ function* newRouteSuccessSaga() {
           type: 'success',
         })
       )
+      yield delay(1000)
       window.location.href = '#/routes'
     }
   )
@@ -37,6 +38,7 @@ function* newMethodSuccessSaga() {
           type: 'success',
         })
       )
+      yield delay(1000)
       window.location.href = '#/routes'
     }
   )

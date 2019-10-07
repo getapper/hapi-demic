@@ -34,7 +34,7 @@ export default (API: string) => async req => {
         logErrors.ROUTING_NOT_FOUND,
       );
     } else {
-      const routeTree: string[] = path.split('-');
+      const routeTree: string[] = path.split('_');
       if (!routing.checkRouteTreeExists(routeTree)) {
         throw new ClientError(
           clientErrors.ROUTE_NOT_FOUND,
