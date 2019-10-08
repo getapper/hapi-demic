@@ -64,7 +64,6 @@ export default class Routing {
       await stat(path);
     } catch (e) {
       await mkdir(path);
-      // @TODO: Convert $param in {param}
       await writeFile(`${path}/index.ts`, generateIndex(
         `apis${routeTree
           .map(r => r.indexOf('-') !== -1 ? `['${r}']` : `.${r}`)
