@@ -20,10 +20,37 @@ import {
   generateMethodsIndex,
   generateRoutesIndex,
 } from './templates/routes';
+import path from "path";
+import {exec} from "child_process";
 
 const stat = util.promisify(fs.stat);
 const mkdir = util.promisify(fs.mkdir);
 const writeFile = util.promisify(fs.writeFile);
+
+const getDirErrors = async (dir, filter, key) => {
+  const fileContent =fs.readFileSync(dir, 'utf8');
+  const regex = new RegExp(filter, 'gi') ;
+  const reply = [{
+    key,
+    clientError: 'VALIDATION_ERROR',
+    logError: 'VALIDATION_ERROR'
+  }];
+
+  const matches = fileContent.match(regex) || [];
+  if(matches.length) {
+    matches.forEach(m => {
+      const res = m.match(filter);
+      if (res) {
+        reply.push({
+          key,
+          clientError: res[1],
+          logError: res[2]
+        });
+      }
+    });
+  }
+  return reply;
+};
 
 export default class Routing {
   apis: any
@@ -103,5 +130,27 @@ export default class Routing {
       clientErrors.ROUTE_ALREADY_EXISTS,
       logErrors.ROUTE_ALREADY_EXISTS,
     );
+  }
+
+  async createErrorJsons(pathsJson, regex) {
+    const errors = [];
+
+    for (let pathJson of pathsJson) {
+      errors.push (...await getDirErrors(Routing.routesPath+pathJson.path, regex, pathJson.key));
+    }
+    const clientErrors = {};
+    const logErrors = {};
+    errors.forEach((e) => {
+      if (!clientErrors[e.key]) {
+        clientErrors[e.key] = [];
+      }
+      if (!logErrors[e.key]) {
+        logErrors[e.key] = [];
+      }
+      clientErrors[e.key].push(e.clientError);
+      logErrors[e.key].push(e.logError);
+    });
+    fs.writeFileSync(path.join(Routing.routesPath,'../constants/errors/', 'client-errors.json'), JSON.stringify(clientErrors,null,2));
+    fs.writeFileSync(path.join(Routing.routesPath,'../constants/errors/', 'log-errors.json'), JSON.stringify(logErrors,null,2));
   }
 }

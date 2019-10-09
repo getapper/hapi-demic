@@ -7,7 +7,7 @@ import feedbackSaga from 'root-redux/sagas/feedback'
 import successFeedbackSaga from 'root-redux/sagas/feedback/success'
 import timeoutFeedbackSaga from 'root-redux/sagas/feedback/timeout'
 import {
-  newRouteSuccessSaga, newMethodSuccessSaga,
+  newRouteSuccessSaga, newMethodSuccessSaga, errorsCreatedSuccessSaga,
 } from 'root-redux/sagas/routing'
 
 
@@ -19,5 +19,6 @@ export default function* rootSaga() {
     timeoutFeedbackSaga(),
     newRouteSuccessSaga(),
     newMethodSuccessSaga(),
+    errorsCreatedSuccessSaga(),
   ])
 }

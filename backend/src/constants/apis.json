@@ -1,6 +1,11 @@
 {
   "api": {
     "routes": {
+      "errors": {
+        "methods": {
+          "POST": "api/errors/POST"
+        }
+      },
       "project": {
         "methods": {
           "GET": "api/project/GET"

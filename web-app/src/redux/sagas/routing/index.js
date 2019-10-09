@@ -9,7 +9,9 @@ import {
   showFeedback,
 } from 'root-redux/actions/global'
 import {
-  CREATE_API_ROUTING_AJAX_SUCCESS, CREATE_API_ROUTING_ENDPOINTS_AJAX_SUCCESS,
+  CREATE_API_ROUTING_AJAX_SUCCESS,
+  CREATE_API_ROUTING_ENDPOINTS_AJAX_SUCCESS,
+  CREATE_API_ERRORS_AJAX_SUCCESS,
 } from 'root-redux/action-types'
 
 function* newRouteSuccessSaga() {
@@ -44,7 +46,24 @@ function* newMethodSuccessSaga() {
   )
 }
 
+function* errorsCreatedSuccessSaga() {
+  yield takeEvery(
+    CREATE_API_ERRORS_AJAX_SUCCESS,
+    function* () {
+      yield put(
+        showFeedback({
+          message: 'Errors created successfully',
+          type: 'success',
+        })
+      )
+      yield delay(1000)
+      window.location.href = '#'
+    }
+  )
+}
+
 export {
   newRouteSuccessSaga,
   newMethodSuccessSaga,
+  errorsCreatedSuccessSaga,
 }

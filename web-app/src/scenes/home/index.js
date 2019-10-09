@@ -35,6 +35,9 @@ import {
 
 // STYLE
 import styles from './style.js'
+import {
+  createApiErrorsAjax,
+} from '../../redux/actions/ajax'
 
 function Home({
   classes,
@@ -81,6 +84,16 @@ function Home({
                 variant="contained"
               >
                 Models
+              </Button>
+              <Button
+                color="secondary"
+                className={classes.ML10}
+                onClick={() => {
+                  dispatch(createApiErrorsAjax(restUri))
+                }}
+                variant="contained"
+              >
+                Errors
               </Button>
             </div>
           </Fragment>
