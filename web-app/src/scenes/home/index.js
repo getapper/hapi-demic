@@ -15,6 +15,7 @@ import {
 import {
   Button,
   CircularProgress,
+  Divider,
   Paper, Typography,
   withStyles,
 } from '@material-ui/core'
@@ -85,9 +86,18 @@ function Home({
               >
                 Models
               </Button>
+            </div>
+            <Divider
+              className={cn(classes.MT20, classes.MB20)}
+            />
+            <Typography
+              className={classes.MB20}
+              variant="subtitle1"
+            >Tasks
+            </Typography>
+            <div>
               <Button
-                color="secondary"
-                className={classes.ML10}
+                color="default"
                 onClick={() => {
                   dispatch(createApiErrorsAjax(restUri))
                 }}
