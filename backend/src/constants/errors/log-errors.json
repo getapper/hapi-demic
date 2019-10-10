@@ -1,8 +1,14 @@
 {
+  "api/$id/GET": [
+    "VALIDATION_ERROR"
+  ],
   "api/errors/POST": [
     "VALIDATION_ERROR"
   ],
   "api/project/GET": [
+    "VALIDATION_ERROR"
+  ],
+  "api/project/POST": [
     "VALIDATION_ERROR"
   ],
   "api/routing/GET": [
@@ -14,8 +20,6 @@
     "ROUTE_NOT_FOUND,"
   ],
   "api/routing/endpoints/POST": [
-    "VALIDATION_ERROR",
-    "ROUTING_NOT_FOUND,",
-    "ROUTE_NOT_FOUND,"
+    "VALIDATION_ERROR"
   ]
 }

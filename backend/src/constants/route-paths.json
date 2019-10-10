@@ -1,6 +1,8 @@
 {
+  "api/$id/GET": "/api/{id}",
   "api/errors/POST": "/api/errors",
   "api/project/GET": "/api/project",
+  "api/project/POST": "/api/project",
   "api/routing/GET": "/api/routing",
   "api/routing/POST": "/api/routing",
   "api/routing/endpoints/POST": "/api/routing/endpoints"

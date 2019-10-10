@@ -4,6 +4,7 @@ import { listDirectory } from 'root/helpers/fs';
 // LIBS
 import fs from 'fs';
 import util from 'util';
+import path from 'path';
 
 // MODELS
 import { ClientError } from 'root/models/errors';
@@ -20,8 +21,6 @@ import {
   generateMethodsIndex,
   generateRoutesIndex,
 } from './templates/routes';
-import path from "path";
-import {exec} from "child_process";
 
 const stat = util.promisify(fs.stat);
 const mkdir = util.promisify(fs.mkdir);
@@ -52,15 +51,46 @@ const getDirErrors = async (dir, filter, key) => {
   return reply;
 };
 
+const handlersPaths = (routesPaths) => {
+  const handlersPaths = [];
+  Object.keys(routesPaths).map((rp) =>{
+    let path = 'api';
+    let i = 1;
+    const route = rp.split('/');
+    while (route[i]) {
+      if (['POST', 'GET', 'DELETE', 'PUT'].indexOf(route[i]) !== -1) {
+        path = path + '/methods/' + route[i].toLowerCase();
+      } else {
+        path = path + '/routes/' + route[i];
+      }
+      i++;
+    }
+    handlersPaths.push({
+      key: rp,
+      path: path+'/handler.ts'
+    });
+  });
+  return handlersPaths;
+};
+
 export default class Routing {
   apis: any
+  routes: any
 
   static get apiPath() {
     return `${process.cwd()}/src/constants/apis.json`;
   }
 
+  static get routePathsPath() {
+    return `${process.cwd()}/src/constants/route-paths.json`;
+  }
+
   static get routesPath() {
     return `${process.cwd()}/src/routes/`;
+  }
+
+  static get errorsPath() {
+    return `${process.cwd()}/src/constants/errors/`;
   }
 
   async read() {
@@ -70,6 +100,15 @@ export default class Routing {
       buffer = await readFile(Routing.apiPath);
     } catch (e) {}
     this.apis = !!buffer ? JSON.parse(buffer.toString()) : null;
+  }
+
+  async readRoutes() {
+    const readFile = util.promisify(fs.readFile);
+    let buffer: Buffer = null;
+    try {
+      buffer = await readFile(Routing.routePathsPath);
+    } catch (e) {}
+    this.routes = !!buffer ? JSON.parse(buffer.toString()) : null;
   }
 
   checkRouteTreeExists(routeTree: string[]) {
@@ -111,7 +150,7 @@ export default class Routing {
     );
   }
 
-  async addRoute(routeTree: string[], route: string, clientErrors, logErrors) {
+  async addRoute(routeTree: string[], route: string, clientErrors: any, logErrors: any) {
     const path = `${Routing.routesPath}${[...routeTree, route].join('/routes/')}`;
     const rootRoutesPath = `${Routing.routesPath}${routeTree.join('/routes/')}/routes`;
     try {
@@ -132,11 +171,14 @@ export default class Routing {
     );
   }
 
-  async createErrorJsons(pathsJson, regex) {
+  async createErrorJsons() {
+    const regex = 'throw new ClientError.*[\\n | \\r\\n]?\.*clientErrors\\.(.*),.*[\\n | \\r\\n]?.*logErrors\\.(.*).*[\\n | \\r\\n]?.*\\).*';
+    await this.readRoutes();
+    const pathsJson = await handlersPaths(this.routes);
     const errors = [];
 
     for (let pathJson of pathsJson) {
-      errors.push (...await getDirErrors(Routing.routesPath+pathJson.path, regex, pathJson.key));
+      errors.push(...await getDirErrors(Routing.routesPath+pathJson.path, regex, pathJson.key));
     }
     const clientErrors = {};
     const logErrors = {};
@@ -147,10 +189,14 @@ export default class Routing {
       if (!logErrors[e.key]) {
         logErrors[e.key] = [];
       }
-      clientErrors[e.key].push(e.clientError);
-      logErrors[e.key].push(e.logError);
+      if (clientErrors[e.key].indexOf(e.clientError) === -1) {
+        clientErrors[e.key].push(e.clientError);
+      }
+      if (logErrors[e.key].indexOf(e.logError) === -1) {
+        logErrors[e.key].push(e.logError);
+      }
     });
-    fs.writeFileSync(path.join(Routing.routesPath,'../constants/errors/', 'client-errors.json'), JSON.stringify(clientErrors,null,2));
-    fs.writeFileSync(path.join(Routing.routesPath,'../constants/errors/', 'log-errors.json'), JSON.stringify(logErrors,null,2));
+    fs.writeFileSync(path.join(Routing.errorsPath, 'client-errors.json'), JSON.stringify(clientErrors,null,2));
+    fs.writeFileSync(path.join(Routing.errorsPath, 'log-errors.json'), JSON.stringify(logErrors,null,2));
   }
 }

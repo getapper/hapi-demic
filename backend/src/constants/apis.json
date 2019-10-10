@@ -1,6 +1,11 @@
 {
   "api": {
     "routes": {
+      "$id": {
+        "methods": {
+          "GET": "api/$id/GET"
+        }
+      },
       "errors": {
         "methods": {
           "POST": "api/errors/POST"
@@ -8,7 +13,8 @@
       },
       "project": {
         "methods": {
-          "GET": "api/project/GET"
+          "GET": "api/project/GET",
+          "POST": "api/project/POST"
         }
       },
       "routing": {
