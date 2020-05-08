@@ -138,9 +138,9 @@ export default class Routing {
         method.toUpperCase(),
         `/${routeTree.join('/')}`
       ));
-      await writeFile(`${path}/handler.ts`, generateHandler());
-      await writeFile(`${path}/interfaces.ts`, generateInterfaces());
-      await writeFile(`${path}/validate.ts`, generateValidate());
+      await writeFile(`${path}/handler.ts`, generateHandler(method.toLowerCase()));
+      await writeFile(`${path}/interfaces.ts`, generateInterfaces(method.toLowerCase()));
+      await writeFile(`${path}/validate.ts`, generateValidate(method.toLowerCase()));
       await writeFile(`${rootMethodsPath}/index.ts`, generateMethodsIndex(await listDirectory(rootMethodsPath)));
       return;
     }

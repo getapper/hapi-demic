@@ -1,10 +1,16 @@
 {
   "INTERNAL": "INTERNAL",
+  "api/$id/GET": {
+    "VALIDATION_ERROR": "api/$id/GET_VALIDATION_ERROR"
+  },
   "api/errors/POST": {
     "VALIDATION_ERROR": "api/errors/POST_VALIDATION_ERROR"
   },
   "api/project/GET": {
     "VALIDATION_ERROR": "api/project/GET_VALIDATION_ERROR"
+  },
+  "api/project/POST": {
+    "VALIDATION_ERROR": "api/project/POST_VALIDATION_ERROR"
   },
   "api/routing/GET": {
     "VALIDATION_ERROR": "api/routing/GET_VALIDATION_ERROR"
@@ -15,8 +21,6 @@
     "ROUTE_NOT_FOUND": "api/routing/POST_ROUTE_NOT_FOUND"
   },
   "api/routing/endpoints/POST": {
-    "VALIDATION_ERROR": "api/routing/endpoints/POST_VALIDATION_ERROR",
-    "ROUTING_NOT_FOUND": "api/routing/endpoints/POST_ROUTING_NOT_FOUND",
-    "ROUTE_NOT_FOUND": "api/routing/endpoints/POST_ROUTE_NOT_FOUND"
+    "VALIDATION_ERROR": "api/routing/endpoints/POST_VALIDATION_ERROR"
   }
 }

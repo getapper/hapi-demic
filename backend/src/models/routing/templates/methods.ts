@@ -28,11 +28,11 @@ export default () => ({
 });
 `;
 
-export const generateHandler = () => `// HELPERS
+export const generateHandler = (method) => `// HELPERS
 import getErrors from 'root/helpers/get-errors';
 
 // INTERFACES
-import { ReplyData } from './interfaces';
+import {${(method === 'post' || method === 'put') ? ' Payload,':''} Params, Query, ReplyData } from './interfaces';
 
 // MODELS
 
@@ -41,11 +41,13 @@ export default (API: string) => async req => {
   const {
     clientErrors,
     logErrors,
-    internalErrors
+    internalErrors,
   } = getErrors(API);
 
   let err = null;
-  const replyData: ReplyData = {};
+  const replyData: ReplyData = {};${(method === 'post' || method === 'put')? '\n  const payload: Payload = req.payload;': ''}
+  const params: Params = req.params;
+  const query: Query = req.query;
 
   try {
 
@@ -61,11 +63,11 @@ export default (API: string) => async req => {
 };
 `;
 
-export const generateValidate = () => `import joi from '@hapi/joi';
+export const generateValidate = (method) => `import joi from '@hapi/joi';
 
-export default {
+export default {${(method ==='post' || method === 'put') ? '\n  payload: joi.object({}),' : ''}\n  params: joi.object({}),\n  query: joi.object({}),
 };
 `;
 
-export const generateInterfaces = () => `export interface ReplyData {};
+export const generateInterfaces = (method) => `export interface ReplyData {};${(method === 'post' || method === 'put') ? '\nexport interface Payload {};' : ''}\nexport interface Params {};\nexport interface Query {};
 `;
