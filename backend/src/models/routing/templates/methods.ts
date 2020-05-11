@@ -1,3 +1,5 @@
+const METHODS_WITH_PAYLOAD = ['post', 'put']
+
 export const generateIndex = (
   methodPath: string,
   method: string,
@@ -32,7 +34,7 @@ export const generateHandler = (method) => `// HELPERS
 import getErrors from 'root/helpers/get-errors';
 
 // INTERFACES
-import {${(method === 'post' || method === 'put') ? ' Payload,':''} Params, Query, ReplyData } from './interfaces';
+import {${(METHODS_WITH_PAYLOAD.includes(method)) ? ' Payload,':''} Params, Query, ReplyData } from './interfaces';
 
 // MODELS
 
@@ -45,7 +47,7 @@ export default (API: string) => async req => {
   } = getErrors(API);
 
   let err = null;
-  const replyData: ReplyData = {};${(method === 'post' || method === 'put')? '\n  const payload: Payload = req.payload;': ''}
+  const replyData: ReplyData = {};${(METHODS_WITH_PAYLOAD.includes(method))? '\n  const payload: Payload = req.payload;': ''}
   const params: Params = req.params;
   const query: Query = req.query;
 
@@ -63,11 +65,11 @@ export default (API: string) => async req => {
 };
 `;
 
-export const generateValidate = (method) => `import joi from '@hapi/joi';
+export const generateValidate = (method, params) => `import joi from '@hapi/joi';
 
-export default {${(method ==='post' || method === 'put') ? '\n  payload: joi.object({}),' : ''}\n  params: joi.object({}),\n  query: joi.object({}),
+export default {${(METHODS_WITH_PAYLOAD.includes(method)) ? '\n  payload: joi.object({}),' : ''}${(params.length) ? `\n  params: joi.object({${params.map(param => `\n    ${param}: joi.any(),`)}\n  }),` : ''}\n  query: joi.object({}),
 };
 `;
 
-export const generateInterfaces = (method) => `export interface ReplyData {};${(method === 'post' || method === 'put') ? '\nexport interface Payload {};' : ''}\nexport interface Params {};\nexport interface Query {};
+export const generateInterfaces = (method) => `export interface ReplyData {};${(METHODS_WITH_PAYLOAD.includes(method)) ? '\nexport interface Payload {};' : ''}\nexport interface Params {};\nexport interface Query {};
 `;

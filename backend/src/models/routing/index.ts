@@ -126,6 +126,7 @@ export default class Routing {
   async addMethod(routeTree: string[], method: string, clientErrors, logErrors) {
     const path = `${Routing.routesPath}${routeTree.join('/routes/')}/methods/${method.toLowerCase()}`;
     const rootMethodsPath = `${Routing.routesPath}${routeTree.join('/routes/')}/methods`;
+    const params = routeTree.filter(element => element[0] === '$')
     try {
       await stat(path);
     } catch (e) {
@@ -140,7 +141,7 @@ export default class Routing {
       ));
       await writeFile(`${path}/handler.ts`, generateHandler(method.toLowerCase()));
       await writeFile(`${path}/interfaces.ts`, generateInterfaces(method.toLowerCase()));
-      await writeFile(`${path}/validate.ts`, generateValidate(method.toLowerCase()));
+      await writeFile(`${path}/validate.ts`, generateValidate(method.toLowerCase(), params));
       await writeFile(`${rootMethodsPath}/index.ts`, generateMethodsIndex(await listDirectory(rootMethodsPath)));
       return;
     }
