@@ -126,7 +126,7 @@ export default class Routing {
   async addMethod(routeTree: string[], method: string, clientErrors, logErrors) {
     const path = `${Routing.routesPath}${routeTree.join('/routes/')}/methods/${method.toLowerCase()}`;
     const rootMethodsPath = `${Routing.routesPath}${routeTree.join('/routes/')}/methods`;
-    const params = routeTree.filter(element => element[0] === '$')
+    const params = routeTree.filter(element => element[0] === '$').map(element => element.replace('$', ''))
     try {
       await stat(path);
     } catch (e) {
